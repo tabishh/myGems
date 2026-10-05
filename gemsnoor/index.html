@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GemsNoor — Timeless Beauty, Precious You. Discover handcrafted Hyderabadi jewellery, bridal pieces, earrings, necklaces and bangles.">
+  <title>GemsNoor | Timeless Beauty, Precious You</title>
+  <style>
+    :root{
+      --wine:#54152c; --wine2:#7a2445; --cream:#fbf7f1; --paper:#fffdf9;
+      --gold:#b78a43; --ink:#251b1f; --muted:#76696d; --line:#eadfd5;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--paper)}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    .topbar{background:var(--wine);color:#fff;text-align:center;padding:9px 20px;font-size:12px;letter-spacing:.12em}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1200px;margin:auto;height:76px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:Georgia,serif;font-size:28px;letter-spacing:.04em;color:var(--wine);font-weight:bold}
+    .brand span{color:var(--gold)}
+    nav{display:flex;gap:28px;font-size:14px}
+    nav a:hover{color:var(--wine)}
+    .nav-actions{display:flex;gap:10px}
+    .icon{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:white}
+    .hero{padding:0}
+    .hero img{display:block;width:100%;height:auto}
+    .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#e4c68f;font-weight:bold}
+    h1{font-family:Georgia,serif;font-size:clamp(46px,7vw,82px);line-height:.98;margin:18px 0 22px;max-width:760px;font-weight:500}
+    .hero p{max-width:560px;font-size:17px;line-height:1.7;color:#f5ebee}
+    .btns{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:14px 23px;border:1px solid transparent;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+    .btn-gold{background:var(--gold);color:white}
+    .btn-light{border-color:#fff;color:#fff}
+    section{padding:84px 24px}
+    .wrap{max-width:1200px;margin:auto}
+    .section-head{text-align:center;margin-bottom:42px}
+    .collections-head{max-width:780px;margin:0 auto 14px}
+    .collections-head h2{font:500 40px Georgia,serif;margin:0;color:var(--wine)}
+    .slider-controls{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+    .slider-btn{width:42px;height:42px;border:1px solid var(--line);background:white;color:var(--wine);font-size:28px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:.2s ease}
+    .slider-btn:hover:not(:disabled){background:var(--wine);color:white;border-color:var(--wine)}
+    .slider-btn:disabled{opacity:.35;cursor:not-allowed}
+    .section-head p{color:var(--muted);max-width:600px;margin:auto;line-height:1.6}
+    .categories-slider{overflow:hidden}
+    .categories-track{display:flex;gap:18px;transition:transform .4s ease}
+    .cat{flex:0 0 calc((100% - 54px) / 4);height:390px;position:relative;overflow:hidden}
+    .cat img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .cat:hover img{transform:scale(1.04)}
+    .cat:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(28,12,18,.78))}
+    .cat-info{position:absolute;z-index:2;bottom:25px;left:24px;color:white}
+    .cat-info h3{font:500 25px Georgia,serif;margin:0 0 5px}
+    .cat-info span{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .products-section{background:var(--cream)}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .product{background:white;border:1px solid var(--line)}
+    .product-img{height:300px;overflow:hidden;position:relative;background:#eee}
+    .product-img img{width:100%;height:100%;object-fit:cover;transition:.4s}
+    .product:hover img{transform:scale(1.035)}
+    .badge{position:absolute;top:14px;left:14px;background:var(--wine);color:white;padding:7px 10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+    .product-info{padding:18px}
+    .product-info h3{font:500 18px Georgia,serif;margin:0 0 8px}
+    .price{color:var(--wine);font-weight:bold}
+    .old{color:#a59a9d;text-decoration:line-through;margin-left:8px;font-size:13px}
+    .story{display:grid;grid-template-columns:1fr 1fr;min-height:530px;padding:0}
+    .story-img{background:url('https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1000&q=85') center/cover}
+    .story-copy{background:var(--wine);color:white;padding:70px;display:flex;flex-direction:column;justify-content:center}
+    .story-copy h2{font:500 44px Georgia,serif;margin:12px 0 20px}
+    .story-copy p{color:#ecdde3;line-height:1.8;max-width:530px}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;text-align:center}
+    .feature{padding:15px}
+    .feature .symbol{font-size:28px;color:var(--gold);margin-bottom:15px}
+    .feature h3{font:500 18px Georgia,serif;margin:8px}
+    .feature p{color:var(--muted);font-size:13px;line-height:1.6}
+    .newsletter{background:#efe4dc;text-align:center}
+    .newsletter h2{font:500 38px Georgia,serif;color:var(--wine);margin:10px}
+    .newsletter p{color:var(--muted)}
+    .subscribe{display:flex;max-width:530px;margin:28px auto 0}
+    .subscribe input{flex:1;padding:15px;border:1px solid #d8c7bc;background:white;outline:none}
+    .subscribe button{border:0;background:var(--wine);color:white;padding:0 25px;text-transform:uppercase;letter-spacing:.08em}
+    footer{background:#24161b;color:#d8cbd0;padding:55px 24px 25px}
+    .footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:45px}
+    footer h3{color:white;font:500 18px Georgia,serif}
+    footer p,footer a{font-size:13px;line-height:2;color:#bdaeb3;display:block}
+    .copyright{max-width:1200px;margin:35px auto 0;border-top:1px solid #49363d;padding-top:22px;font-size:12px;text-align:center}
+    @media(max-width:900px){
+      nav{display:none}.products{grid-template-columns:repeat(2,1fr)}
+      .categories-track{gap:14px}.cat{flex-basis:calc((100% - 14px) / 2)}
+      .story{grid-template-columns:1fr}.story-img{min-height:420px}.features{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}.story-copy{padding:50px 30px}
+    }
+    @media(max-width:560px){
+      .nav{padding:0 16px}.brand{font-size:24px}
+      section{padding:65px 16px}.products{grid-template-columns:1fr}
+      .collections-head{flex-direction:column}.slider-controls{margin-left:0}.cat{flex-basis:100%}.product-img{height:390px}.features,.footer-grid{grid-template-columns:1fr}
+      .subscribe{flex-direction:column}.subscribe button{padding:15px}.nav-actions .icon:first-child{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">COMPLIMENTARY SHIPPING ON ORDERS ABOVE ₹2,999</div>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="GemsNoor Home"><img src="GemsNoorDefault/gemsnoor-logo.png" alt="GemsNoor — Timeless Beauty, Precious You" style="height:58px;width:auto;display:block;object-fit:contain;"></a>
+      <nav>
+        <a href="#new">New Arrivals</a><a href="gemsnoor_bangles.html">Bengals</a>
+        <a href="gemsnoor_earrings.html">Earrings</a><a href="gemsnoor_necklaces.html">Necklaces</a><a href="gemsnoor_bridal.html">Bridal</a><a href="#bestsellers">Bestsellers</a>
+</nav>
+      <div class="nav-actions"><div class="icon">⌕</div><div class="icon">♡</div><div class="icon">🛍</div></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="new">
+      <img src="GemsNoorDefault/gemsnoor-cover.png" alt="Best Hyderabadi jewelry you can get, featuring bridal jewelry and traditional attire">
+    </section>
+
+    <section id="collections">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Curated for you</div>
+          <div class="collections-head"><h2>Shop by Collection</h2></div>
+          <p>Traditional artistry meets contemporary elegance in pieces designed for celebrations and beyond.</p>
+        </div>
+        <div class="categories-slider" aria-label="Collection carousel">
+          <div class="categories-track">
+            <a class="cat" href="#"><img src="GemsNoorDefault/gemsnoor-bengals.png" alt="Bangles"><div class="cat-info"><h3>Bangles</h3><span>Explore collection →</span></div></a>
+            <a class="cat" href="gemsnoor_necklaces.html"><img src="GemsNoorDefault/gemsnoor-necklace.png" alt="Necklaces"><div class="cat-info"><h3>Necklaces</h3><span>Explore collection →</span></div></a>
+            <a class="cat" href="gemsnoor_earrings.html"><img src="GemsNoorDefault/gemsnoor-earings.png" alt="Earrings"><div class="cat-info"><h3>Earrings</h3><span>Explore collection →</span></div></a>
+            <a class="cat" href="gemsnoor_bridal.html"><img src="GemsNoorDefault/gemsnoor-bride.png" alt="Bridal jewelry"><div class="cat-info"><h3>Bridal</h3><span>Explore collection →</span></div></a>
+            <a class="cat" href="gemsnoor_realpearls.html"><img src="GemsNoorDefault/gemsnoor-realpearls.png" alt="Real Pearls"><div class="cat-info"><h3>Real Pearls</h3><span>Explore collection →</span></div></a>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn prev" type="button" aria-label="Previous collection">&#8249;</button>
+          <button class="slider-btn next" type="button" aria-label="Next collection">&#8250;</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="bestsellers">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">Loved by you</div><h2>Our Bestsellers</h2><p>Signature pieces chosen for their detail, elegance and unmistakable Hyderabadi character.</p></div>
+        <div class="products">
+          <article class="product"><div class="product-img"><span class="badge">Bestseller</span><img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=700&q=80"></div><div class="product-info"><h3>Royal Jadau Necklace</h3><span class="price">₹4,499</span><span class="old">₹5,299</span></div></article>
+          <article class="product"><div class="product-img"><span class="badge">New</span><img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=700&q=80"></div><div class="product-info"><h3>Noor Pearl Mala</h3><span class="price">₹2,899</span></div></article>
+          <article class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=80"></div><div class="product-info"><h3>Chandbali Earrings</h3><span class="price">₹1,999</span></div></article>
+          <article class="product"><div class="product-img"><span class="badge">Limited</span><img src="https://images.unsplash.com/photo-1627293509201-cd0c780043e6?auto=format&fit=crop&w=700&q=80"></div><div class="product-info"><h3>Heritage Jhumka</h3><span class="price">₹2,499</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="story-img"></div>
+      <div class="story-copy"><div class="eyebrow">The GemsNoor story</div><h2>Rooted in Hyderabad.<br>Made with heart.</h2><p>Our collections celebrate the grandeur and grace of Hyderabadi jewellery. Each design is selected for its craftsmanship, intricate detail and ability to make tradition feel beautifully personal.</p><p>From intimate celebrations to unforgettable weddings, GemsNoor is jewellery made for your moments.</p><div>
+</div></div>
+    </section>
+
+    <section>
+      <div class="wrap features">
+        <div class="feature"><div class="symbol">✦</div><h3>Handpicked Designs</h3><p>Pieces selected for craftsmanship, detail and timeless appeal.</p></div>
+        <div class="feature"><div class="symbol">♢</div><h3>Premium Quality</h3><p>Beautiful finishing and careful quality checks on every order.</p></div>
+        <div class="feature"><div class="symbol">♡</div><h3>Made for Gifting</h3><p>Elegant pieces for weddings, festivities and special moments.</p></div>
+        <div class="feature"><div class="symbol">✓</div><h3>Secure Shopping</h3><p>A storefront designed for a simple and trusted shopping experience.</p></div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="wrap"><div class="eyebrow">Join the GemsNoor circle</div><h2>A little sparkle in your inbox</h2><p>Be the first to discover new collections, exhibition dates and exclusive offers.</p><form class="subscribe" onsubmit="event.preventDefault(); alert('Thank you for joining GemsNoor!');"><input type="email" required placeholder="Enter your email address"><button>Join Us</button></form></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div><div class="brand" style="color:white">Gems<span>Noor</span></div><p>Timeless Beauty, Precious You!</p></div>
+      <div><h3>Shop</h3><a href="#new">New Arrivals</a><a href="gemsnoor_bangles.html">Bengal</a><a href="gemsnoor_earrings.html">Earrings</a><a href="gemsnoor_necklaces.html">Necklaces</a></div>
+      <div><h3>Help</h3><a href="#">Contact Us</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Care Guide</a></div>
+      <div><h3>Follow</h3><a href="https://www.instagram.com/gemsnoor_official/" target="_blank" rel="noopener">Instagram · @Gemsnoor_official</a><a href="https://wa.me/918886004141" target="_blank" rel="noopener">WhatsApp · 8886004141</a><a href="https://www.gemsnoor.com" target="_blank" rel="noopener">Website · gemsnoor.com</a></div>
+    </div>
+    <div class="copyright">© 2026 GemsNoor. All rights reserved. · Timeless Beauty, Precious You</div>
+  </footer>
+  <script>
+    (function () {
+      const track = document.querySelector('.categories-track');
+      const cards = Array.from(document.querySelectorAll('.cat'));
+      const prev = document.querySelector('.slider-btn.prev');
+      const next = document.querySelector('.slider-btn.next');
+
+      if (!track || !cards.length || !prev || !next) return;
+
+      const visibleCards = window.innerWidth <= 560 ? 1 : window.innerWidth <= 900 ? 2 : 4;
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+      let index = 0;
+
+      function renderSlider() {
+        const cardWidth = cards[0].getBoundingClientRect().width + 18;
+        track.style.transform = 'translateX(' + (-index * cardWidth) + 'px)';
+        prev.disabled = index === 0;
+        next.disabled = index >= maxIndex;
+      }
+
+      prev.addEventListener('click', function () {
+        if (index > 0) {
+          index -= 1;
+          renderSlider();
+        }
+      });
+
+      next.addEventListener('click', function () {
+        if (index < maxIndex) {
+          index += 1;
+          renderSlider();
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        const currentVisible = window.innerWidth <= 560 ? 1 : window.innerWidth <= 900 ? 2 : 4;
+        const nextMaxIndex = Math.max(0, cards.length - currentVisible);
+        index = Math.min(index, nextMaxIndex);
+        renderSlider();
+      });
+
+      renderSlider();
+    })();
+  </script>
+</body>
+</html>

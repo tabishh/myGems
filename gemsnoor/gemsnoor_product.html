@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemsNoor | Royal Chandbali Earrings</title>
+<meta name="description" content="Royal Chandbali Earrings — handcrafted jewellery by GemsNoor.">
+<style>
+:root{
+  --wine:#54152c;--wine-dark:#32101d;--gold:#b78a43;--gold-light:#d8bb82;
+  --cream:#fbf7f1;--paper:#fffdf9;--ink:#251b1f;--muted:#76696d;--line:#eadfd5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+
+.topbar{background:var(--wine);color:#fff;text-align:center;padding:9px;font-size:11px;letter-spacing:.14em}
+
+header{
+  position:sticky;top:0;z-index:20;background:rgba(255,253,249,.97);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)
+}
+.nav{
+  height:76px;max-width:1200px;margin:auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:25px
+}
+.logo{display:flex;align-items:center}
+.logo img{height:58px;width:auto;display:block;object-fit:contain}
+nav{display:flex;gap:24px;font-size:13px}
+nav a:hover{color:var(--wine)}
+.actions{display:flex;gap:9px}
+.icon{
+  width:38px;height:38px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;background:white;cursor:pointer
+}
+
+.breadcrumb{
+  max-width:1200px;margin:auto;padding:22px 24px 5px;
+  font-size:12px;color:var(--muted)
+}
+.breadcrumb span{color:var(--wine)}
+
+.product-page{max-width:1200px;margin:auto;padding:25px 24px 85px}
+.product-layout{
+  display:grid;grid-template-columns:1.08fr .92fr;gap:65px;
+  align-items:start
+}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:90px 1fr;gap:15px}
+.thumbs{display:flex;flex-direction:column;gap:12px}
+.thumb{
+  width:90px;height:105px;border:1px solid var(--line);background:#f3eee9;
+  padding:0;overflow:hidden;cursor:pointer
+}
+.thumb.active{border:2px solid var(--wine)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.main-image{
+  height:650px;background:#f4eee8;position:relative;overflow:hidden
+}
+.main-image img{width:100%;height:100%;object-fit:cover}
+.product-badge{
+  position:absolute;left:18px;top:18px;background:var(--wine);color:#fff;
+  padding:8px 12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase
+}
+.zoom{
+  position:absolute;right:18px;bottom:18px;background:white;border:1px solid var(--line);
+  width:40px;height:40px;border-radius:50%;display:grid;place-items:center
+}
+
+/* Product details */
+.details{padding-top:5px}
+.collection{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:bold
+}
+.details h1{
+  font:500 43px/1.1 Georgia,serif;color:var(--wine);
+  margin:12px 0 12px
+}
+.rating-row{
+  display:flex;align-items:center;gap:10px;padding-bottom:20px;
+  border-bottom:1px solid var(--line)
+}
+.stars{color:#a77b2e;letter-spacing:2px}
+.rating-count{font-size:12px;color:var(--muted)}
+.price-row{display:flex;align-items:center;gap:12px;margin:22px 0 6px}
+.price{font-size:25px;font-weight:bold;color:var(--wine)}
+.old-price{text-decoration:line-through;color:#aaa;font-size:14px}
+.save{background:#efe3d5;color:var(--wine);padding:5px 8px;font-size:10px}
+.tax{font-size:11px;color:var(--muted)}
+.description{color:var(--muted);line-height:1.8;font-size:14px;margin:23px 0}
+.option-title{
+  font-size:11px;text-transform:uppercase;letter-spacing:.12em;
+  font-weight:bold;margin:25px 0 12px
+}
+.options{display:flex;gap:8px;flex-wrap:wrap}
+.option{
+  padding:11px 16px;background:white;border:1px solid var(--line);
+  cursor:pointer;font-size:12px
+}
+.option.active,.option:hover{border-color:var(--wine);color:var(--wine);background:#fbf5ef}
+
+.buy-row{display:grid;grid-template-columns:120px 1fr 1fr;gap:9px;margin-top:28px}
+.qty{
+  display:flex;border:1px solid var(--line);height:52px;background:white
+}
+.qty button{width:36px;border:0;background:white;cursor:pointer;font-size:18px}
+.qty input{width:45px;text-align:center;border:0;outline:0}
+.btn{
+  height:52px;border:0;cursor:pointer;text-transform:uppercase;
+  letter-spacing:.1em;font-size:11px
+}
+.cart{background:white;color:var(--wine);border:1px solid var(--wine)}
+.buy{background:var(--wine);color:white}
+.cart:hover{background:var(--wine);color:white}.buy:hover{background:var(--wine-dark)}
+
+.delivery{
+  margin-top:25px;border:1px solid var(--line);background:var(--cream)
+}
+.delivery-row{
+  display:flex;gap:14px;padding:17px;border-bottom:1px solid var(--line)
+}
+.delivery-row:last-child{border-bottom:0}
+.delivery-icon{font-size:20px;color:var(--gold);width:25px}
+.delivery-row strong{display:block;font-size:12px;margin-bottom:4px}
+.delivery-row span{font-size:11px;color:var(--muted)}
+
+.details-accordion{margin-top:28px;border-top:1px solid var(--line)}
+.accordion{
+  border-bottom:1px solid var(--line);padding:18px 0;
+  display:flex;justify-content:space-between;cursor:pointer
+}
+.accordion strong{font-size:13px}.accordion span{color:var(--wine)}
+
+.trust{
+  margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;text-align:center
+}
+.trust-item{border:1px solid var(--line);padding:15px 8px}
+.trust-item b{display:block;font-size:11px;margin-top:7px}.trust-item span{font-size:10px;color:var(--muted)}
+
+.section{max-width:1200px;margin:auto;padding:80px 24px}
+.section-head{text-align:center;margin-bottom:38px}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:bold}
+.section h2{font:500 38px Georgia,serif;color:var(--wine);margin:10px 0}
+
+.story{
+  background:var(--wine);color:white;text-align:center;padding:65px 24px
+}
+.story h2{font:500 37px Georgia,serif;margin:10px 0 15px}
+.story p{max-width:680px;margin:auto;color:#eadde2;line-height:1.8;font-size:13px}
+
+.related{background:var(--cream)}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.related-card{background:white;border:1px solid var(--line)}
+.related-img{height:270px;overflow:hidden}
+.related-img img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.related-card:hover img{transform:scale(1.04)}
+.related-info{padding:15px}
+.related-info small{color:var(--gold);text-transform:uppercase;letter-spacing:.1em}
+.related-info h3{font:500 18px Georgia,serif;margin:6px 0}
+.related-price{font-size:13px;font-weight:bold;color:var(--wine)}
+
+footer{background:#24161b;color:#cdbec4;padding:50px 24px 25px}
+.footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+footer h3{font:500 18px Georgia,serif;color:#fff}
+footer a,footer p{display:block;color:#bcaeb3;font-size:13px;line-height:2}
+.copy{max-width:1200px;margin:30px auto 0;padding-top:20px;border-top:1px solid #49363d;text-align:center;font-size:11px}
+
+.toast{
+  position:fixed;right:22px;bottom:22px;background:var(--wine);color:white;
+  padding:15px 20px;font-size:12px;transform:translateY(120px);
+  opacity:0;transition:.3s;z-index:50
+}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:900px){
+  nav{display:none}
+  .product-layout{grid-template-columns:1fr;gap:40px}
+  .main-image{height:620px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .nav{padding:0 16px}
+  .actions .icon:first-child{display:none}
+  .breadcrumb{padding-left:16px}
+  .product-page{padding:20px 16px 60px}
+  .gallery{grid-template-columns:60px 1fr;gap:9px}
+  .thumb{width:60px;height:72px}
+  .main-image{height:470px}
+  .details h1{font-size:35px}
+  .buy-row{grid-template-columns:100px 1fr;gap:8px}
+  .buy-row .buy{grid-column:1/-1}
+  .trust{grid-template-columns:1fr 1fr 1fr}
+  .trust-item{padding:12px 4px}
+  .trust-item span{display:block}
+  .related-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .related-img{height:220px}
+  .related-info{padding:11px}
+  .related-info h3{font-size:15px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">COMPLIMENTARY SHIPPING ON ORDERS ABOVE ₹2,999</div>
+
+<header>
+<div class="nav">
+<a href="index.html" class="logo" aria-label="GemsNoor Home"><img src="GemsNoorDefault/gemsnoor-logo.png" alt="GemsNoor — Timeless Beauty, Precious You"></a>
+<nav>
+<a href="index.html">Home</a>
+<a href="gemsnoor_earrings.html">Earrings</a>
+<a href="gemsnoor_necklaces.html">Necklaces</a>
+<a href="gemsnoor_bridal.html">Bridal</a>
+<a href="#">Jadau</a>
+<a href="#">Pearls</a>
+<a href="#">Our Story</a>
+</nav>
+<div class="actions">
+<div class="icon">⌕</div><div class="icon">♡</div><div class="icon">🛍</div>
+</div>
+</div>
+</header>
+
+<div class="breadcrumb">
+Home &nbsp; / &nbsp; Earrings &nbsp; / &nbsp; <span>Royal Chandbali Earrings</span>
+</div>
+
+<main class="product-page">
+<div class="product-layout">
+
+<!-- PRODUCT GALLERY -->
+<section class="gallery">
+<div class="thumbs">
+<button class="thumb active" onclick="changeImage(this,'https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1000&q=90')">
+<img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=300&q=80">
+</button>
+<button class="thumb" onclick="changeImage(this,'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1000&q=90')">
+<img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=300&q=80">
+</button>
+<button class="thumb" onclick="changeImage(this,'https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1000&q=90')">
+<img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=300&q=80">
+</button>
+<button class="thumb" onclick="changeImage(this,'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1000&q=90')">
+<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=300&q=80">
+</button>
+</div>
+
+<div class="main-image">
+<span class="product-badge">Bestseller</span>
+<img id="mainProductImage" src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1000&q=90">
+<div class="zoom">⌕</div>
+</div>
+</section>
+
+<!-- PRODUCT DETAILS -->
+<section class="details">
+<div class="collection">GemsNoor · Earrings</div>
+<h1>Royal Chandbali Earrings</h1>
+
+<div class="rating-row">
+<span class="stars">★★★★★</span>
+<span class="rating-count">4.9 · 38 Reviews</span>
+</div>
+
+<div class="price-row">
+<span class="price">₹1,999</span>
+<span class="old-price">₹2,499</span>
+<span class="save">20% OFF</span>
+</div>
+<div class="tax">Inclusive of all applicable taxes</div>
+
+<p class="description">
+A graceful interpretation of the iconic Chandbali silhouette. Designed with intricate detailing and a regal finish, these earrings bring timeless Hyderabadi elegance to festive occasions, weddings and special evenings.
+</p>
+
+<div class="option-title">Finish</div>
+<div class="options">
+<button class="option active">Antique Gold</button>
+<button class="option">Gold Tone</button>
+</div>
+
+<div class="option-title">Style</div>
+<div class="options">
+<button class="option active">Classic</button>
+<button class="option">Pearl Drops</button>
+</div>
+
+<div class="option-title">Quantity</div>
+<div class="buy-row">
+<div class="qty">
+<button onclick="changeQty(-1)">−</button>
+<input id="qty" value="1" readonly>
+<button onclick="changeQty(1)">+</button>
+</div>
+<button class="btn cart" onclick="showToast('Royal Chandbali added to your cart')">Add to Cart</button>
+<button class="btn buy" onclick="showToast('Proceeding to checkout')">Buy Now</button>
+</div>
+
+<div class="delivery">
+<div class="delivery-row">
+<div class="delivery-icon">⌖</div>
+<div><strong>Check delivery</strong><span>Enter your PIN code to check estimated delivery time.</span></div>
+</div>
+<div class="delivery-row">
+<div class="delivery-icon">◇</div>
+<div><strong>Complimentary shipping</strong><span>Free shipping on orders above ₹2,999.</span></div>
+</div>
+<div class="delivery-row">
+<div class="delivery-icon">↻</div>
+<div><strong>Easy returns</strong><span>Returns accepted according to our jewellery return policy.</span></div>
+</div>
+</div>
+
+<div class="details-accordion">
+<div class="accordion"><strong>Product Details</strong><span>+</span></div>
+<div class="accordion"><strong>Material & Care</strong><span>+</span></div>
+<div class="accordion"><strong>Shipping & Returns</strong><span>+</span></div>
+</div>
+
+<div class="trust">
+<div class="trust-item">✦<b>Handpicked</b><span>Quality checked</span></div>
+<div class="trust-item">◇<b>Gift Ready</b><span>Elegant packaging</span></div>
+<div class="trust-item">✓<b>Secure</b><span>Safe checkout</span></div>
+</div>
+</section>
+</div>
+</main>
+
+<section class="story">
+<div class="eyebrow">The GemsNoor craft</div>
+<h2>A little royal. A lot of Noor.</h2>
+<p>Inspired by the jewellery traditions of Hyderabad, every GemsNoor piece is selected to bring heritage, elegance and a sense of occasion to your personal style.</p>
+</section>
+
+<section class="section related">
+<div class="section-head">
+<div class="eyebrow">Complete your look</div>
+<h2>You may also like</h2>
+</div>
+
+<div class="related-grid">
+<a class="related-card" href="gemsnoor_necklaces.html">
+<div class="related-img"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=85"></div>
+<div class="related-info"><small>Necklace</small><h3>Royal Jadau Haar</h3><span class="related-price">₹6,499</span></div>
+</a>
+<a class="related-card" href="#">
+<div class="related-img"><img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=85"></div>
+<div class="related-info"><small>Earrings</small><h3>Heritage Jhumka</h3><span class="related-price">₹2,499</span></div>
+</a>
+<a class="related-card" href="gemsnoor_bridal.html">
+<div class="related-img"><img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=700&q=85"></div>
+<div class="related-info"><small>Bridal</small><h3>Mehfil Kundan Set</h3><span class="related-price">₹9,499</span></div>
+</a>
+<a class="related-card" href="#">
+<div class="related-img"><img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=700&q=85"></div>
+<div class="related-info"><small>Pearl</small><h3>Noor Pearl Drops</h3><span class="related-price">₹1,899</span></div>
+</a>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+<div><div class="logo"><img src="GemsNoorDefault/gemsnoor-logo.png" alt="GemsNoor — Timeless Beauty, Precious You"></div><p>Timeless Beauty, Precious You!</p></div>
+<div><h3>Shop</h3><a href="#">New Arrivals</a><a href="#">Jadau</a><a href="#">Pearls</a><a href="gemsnoor_earrings.html">Earrings</a></div>
+<div><h3>Help</h3><a href="#">Contact Us</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Care Guide</a></div>
+<div><h3>Follow</h3><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">WhatsApp</a></div>
+</div>
+<div class="copy">© 2026 GemsNoor. All rights reserved. · Static storefront demo</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function changeImage(button,url){
+document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+button.classList.add('active');
+document.getElementById('mainProductImage').src=url;
+}
+function changeQty(delta){
+const input=document.getElementById('qty');
+let value=parseInt(input.value)+delta;
+if(value<1)value=1;
+if(value>10)value=10;
+input.value=value;
+}
+document.querySelectorAll('.option').forEach(btn=>{
+btn.addEventListener('click',()=>{
+const group=btn.parentElement;
+group.querySelectorAll('.option').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+});
+});
+function showToast(message){
+const toast=document.getElementById('toast');
+toast.textContent=message;
+toast.classList.add('show');
+setTimeout(()=>toast.classList.remove('show'),2500);
+}
+document.querySelectorAll('.accordion').forEach(row=>{
+row.addEventListener('click',()=>{
+const plus=row.querySelector('span');
+plus.textContent=plus.textContent==='+'?'−':'+';
+});
+});
+</script>
+</body>
+</html>
